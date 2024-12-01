@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://5jjimb1dl420"]
+
+[ext_resource type="Script" path="res://scripts/maquina_de_estados.gd" id="1_fuonb"]
+[ext_resource type="Script" path="res://scripts/estado_idle.gd" id="2_ofe6f"]
+[ext_resource type="Script" path="res://scripts/estado_andando.gd" id="3_7q5l7"]
+[ext_resource type="Script" path="res://scripts/estado_pulando.gd" id="4_7s4wk"]
+[ext_resource type="Script" path="res://scripts/estado_caindo.gd" id="5_4x8ep"]
+[ext_resource type="Script" path="res://scripts/estado_deslizando.gd" id="6_r2eck"]
+
+[node name="MaquinaDeEstados" type="Node" node_paths=PackedStringArray("Idle", "Andando", "Pulando", "Caindo", "Deslizando")]
+script = ExtResource("1_fuonb")
+Idle = NodePath("Idle")
+Andando = NodePath("Andando")
+Pulando = NodePath("Pulando")
+Caindo = NodePath("Caindo")
+Deslizando = NodePath("Deslizando")
+
+[node name="Idle" type="Node" parent="." node_paths=PackedStringArray("maquina")]
+script = ExtResource("2_ofe6f")
+maquina = NodePath("..")
+
+[node name="Andando" type="Node" parent="." node_paths=PackedStringArray("maquina")]
+script = ExtResource("3_7q5l7")
+maquina = NodePath("..")
+
+[node name="Pulando" type="Node" parent="." node_paths=PackedStringArray("maquina")]
+script = ExtResource("4_7s4wk")
+maquina = NodePath("..")
+
+[node name="Caindo" type="Node" parent="." node_paths=PackedStringArray("maquina")]
+script = ExtResource("5_4x8ep")
+maquina = NodePath("..")
+
+[node name="Deslizando" type="Node" parent="." node_paths=PackedStringArray("maquina")]
+script = ExtResource("6_r2eck")
+maquina = NodePath("..")

@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1w3bw5nmir2k"]
+
+[ext_resource type="Texture2D" uid="uid://fyj38p2u3bfr" path="res://adventurer-1.3-Sheet.png" id="1_e86av"]
+[ext_resource type="PackedScene" uid="uid://5jjimb1dl420" path="res://maquina_de_estados.tscn" id="2_1odi4"]
+
+[sub_resource type="Animation" id="Animation_ug7ja"]
+resource_name = "Andando"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_yuy0v"]
+resource_name = "Caindo"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_wtw7f"]
+resource_name = "Deslizando"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.366667, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_052ef"]
+resource_name = "Idle"
+length = 0.666
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_sx1hm"]
+resource_name = "Levantando"
+length = 0.253
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [26, 27, 28]
+}
+
+[sub_resource type="Animation" id="Animation_e17v6"]
+resource_name = "Pulando"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0, 0.0666667, 0.133333, 0.333333, 0.4, 0.466667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_jnpst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddh8p"]
+_data = {
+"Andando": SubResource("Animation_ug7ja"),
+"Caindo": SubResource("Animation_yuy0v"),
+"Deslizando": SubResource("Animation_wtw7f"),
+"Idle": SubResource("Animation_052ef"),
+"Levantando": SubResource("Animation_sx1hm"),
+"Pulando": SubResource("Animation_e17v6"),
+"RESET": SubResource("Animation_jnpst")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mx4hk"]
+radius = 11.0
+height = 34.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(51, -26)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ddh8p")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("1_e86av")
+hframes = 8
+vframes = 12
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_mx4hk")
+
+[node name="MaquinaDeEstados" parent="." instance=ExtResource("2_1odi4")]
+
+[node name="Idle" parent="MaquinaDeEstados" index="0" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+ator = NodePath("../..")
+"toca_animação" = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Andando" parent="MaquinaDeEstados" index="1" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+ator = NodePath("../..")
+"toca_animação" = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Pulando" parent="MaquinaDeEstados" index="2" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+ator = NodePath("../..")
+"toca_animação" = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Caindo" parent="MaquinaDeEstados" index="3" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+ator = NodePath("../..")
+"toca_animação" = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Deslizando" parent="MaquinaDeEstados" index="4" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+ator = NodePath("../..")
+"toca_animação" = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 79)
+offset = Vector2(0, -144.245)
+zoom = Vector2(1.54, 1.54)
+
+[editable path="MaquinaDeEstados"]
