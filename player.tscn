@@ -155,12 +155,7 @@ frame = 1
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_mx4hk")
 
-[node name="MaquinaDeEstados" parent="." node_paths=PackedStringArray("Idle", "Andando", "Pulando", "Caindo", "Deslizando") instance=ExtResource("2_1odi4")]
-Idle = NodePath("Idle")
-Andando = NodePath("Andando")
-Pulando = NodePath("Pulando")
-Caindo = NodePath("Caindo")
-Deslizando = NodePath("Deslizando")
+[node name="MaquinaDeEstados" parent="." instance=ExtResource("2_1odi4")]
 
 [node name="Idle" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
 script = ExtResource("3_f6nmc")

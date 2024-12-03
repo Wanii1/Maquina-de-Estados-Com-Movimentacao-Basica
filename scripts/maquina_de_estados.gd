@@ -1,12 +1,8 @@
 class_name Maquina
 extends Node
 
-@export var _estado_atual: Node
-@export var Idle: Estado
-@export var Andando: Estado
-@export var Pulando: Estado
-@export var Caindo: Estado
-@export var Deslizando: Estado
+var _estado_atual: Node
+
 
 
 func _ready() -> void:
