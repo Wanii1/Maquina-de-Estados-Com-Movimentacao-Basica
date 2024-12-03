@@ -2,9 +2,9 @@ class_name Estado
 extends Node
 
 @export var ator: CharacterBody2D
-@export var maquina: Maquina
 @export var toca_animação: AnimationPlayer
 @export var sprite: Sprite2D
+@onready var maquina : Maquina = get_parent()
 
 var input_direcional_x
 var input_direcional_y

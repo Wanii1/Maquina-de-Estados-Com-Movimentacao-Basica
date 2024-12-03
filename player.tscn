@@ -1,7 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1w3bw5nmir2k"]
+[gd_scene load_steps=17 format=3 uid="uid://c1w3bw5nmir2k"]
 
 [ext_resource type="Texture2D" uid="uid://fyj38p2u3bfr" path="res://adventurer-1.3-Sheet.png" id="1_e86av"]
 [ext_resource type="PackedScene" uid="uid://5jjimb1dl420" path="res://maquina_de_estados.tscn" id="2_1odi4"]
+[ext_resource type="Script" path="res://scripts/estado_idle.gd" id="3_f6nmc"]
+[ext_resource type="Script" path="res://scripts/estado_andando.gd" id="4_mfrjv"]
+[ext_resource type="Script" path="res://scripts/estado_pulando.gd" id="5_1olu6"]
+[ext_resource type="Script" path="res://scripts/estado_caindo.gd" id="6_n63ki"]
+[ext_resource type="Script" path="res://scripts/estado_deslizando.gd" id="7_86y7d"]
 
 [sub_resource type="Animation" id="Animation_ug7ja"]
 resource_name = "Andando"
@@ -150,29 +155,39 @@ frame = 1
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_mx4hk")
 
-[node name="MaquinaDeEstados" parent="." instance=ExtResource("2_1odi4")]
+[node name="MaquinaDeEstados" parent="." node_paths=PackedStringArray("Idle", "Andando", "Pulando", "Caindo", "Deslizando") instance=ExtResource("2_1odi4")]
+Idle = NodePath("Idle")
+Andando = NodePath("Andando")
+Pulando = NodePath("Pulando")
+Caindo = NodePath("Caindo")
+Deslizando = NodePath("Deslizando")
 
-[node name="Idle" parent="MaquinaDeEstados" index="0" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+[node name="Idle" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+script = ExtResource("3_f6nmc")
 ator = NodePath("../..")
 "toca_animação" = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
 
-[node name="Andando" parent="MaquinaDeEstados" index="1" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+[node name="Andando" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+script = ExtResource("4_mfrjv")
 ator = NodePath("../..")
 "toca_animação" = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
 
-[node name="Pulando" parent="MaquinaDeEstados" index="2" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+[node name="Pulando" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+script = ExtResource("5_1olu6")
 ator = NodePath("../..")
 "toca_animação" = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
 
-[node name="Caindo" parent="MaquinaDeEstados" index="3" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+[node name="Caindo" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+script = ExtResource("6_n63ki")
 ator = NodePath("../..")
 "toca_animação" = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
 
-[node name="Deslizando" parent="MaquinaDeEstados" index="4" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+[node name="Deslizando" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
+script = ExtResource("7_86y7d")
 ator = NodePath("../..")
 "toca_animação" = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")

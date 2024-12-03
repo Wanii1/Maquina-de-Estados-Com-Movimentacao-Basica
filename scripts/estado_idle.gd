@@ -8,14 +8,22 @@ func ao_entrar():
 func update(delta):
 	input_movimentacional()
 	ator.velocity.x = move_toward(ator.velocity.x, 0, 9.0)
-	if !ator.is_on_floor():
-		maquina.trocar_de_estado(maquina.Caindo)
-	if input_direcional_x:
-		ao_andar()
-	if input_direcional_y:
-		if input_direcional_y > 0:
-			maquina.trocar_de_estado(maquina.Pulando)
+
+	ao_cair()
+	ao_andar()
+	ao_pular()
+
 	ator.move_and_slide()
 
+func ao_cair():
+	if !ator.is_on_floor():
+		maquina.trocar_por_nome("Caindo")
+
 func ao_andar():
-	maquina.trocar_de_estado(maquina.Andando)
+	if input_direcional_x:
+		maquina.trocar_por_nome("Andando")
+
+func ao_pular():
+	if input_direcional_y:
+		if input_direcional_y > 0:
+			maquina.trocar_por_nome("Pulando")

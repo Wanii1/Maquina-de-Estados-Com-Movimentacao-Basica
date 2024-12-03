@@ -13,10 +13,21 @@ func update(delta):
 		ator.velocity.y -= gravidade
 		if input_direcional_x:
 			ator.velocity.x = velocidado_no_ar * input_direcional_x
-	elif ator.is_on_floor() and input_direcional_x:
-		maquina.trocar_de_estado(maquina.Andando)
-	elif ator.is_on_floor() and input_direcional_y < 0:
-		maquina.trocar_de_estado(maquina.Deslizando)
-	else: 
-		maquina.trocar_de_estado(maquina.Idle)
+
+	ao_andar()
+	ao_deslizar()
+	ao_parar()
+
 	ator.move_and_slide()
+
+func ao_andar():
+	if ator.is_on_floor() and input_direcional_x:
+		maquina.trocar_por_nome("Andando")
+
+func ao_deslizar():
+	if ator.is_on_floor() and input_direcional_y < 0:
+		maquina.trocar_por_nome("Deslizando")
+
+func ao_parar():
+	if ator.velocity == Vector2.ZERO:
+		maquina.trocar_por_nome("Idle")
