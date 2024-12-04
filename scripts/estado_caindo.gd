@@ -2,7 +2,7 @@ class_name Caindo
 extends Estado
 
 var gravidade := -15.0
-var velocidado_no_ar := 250.0
+var velocidado_no_ar := 350.0
 
 func ao_entrar():
 	toca_animação.play("Caindo")

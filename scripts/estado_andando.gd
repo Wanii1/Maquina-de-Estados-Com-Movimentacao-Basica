@@ -1,7 +1,7 @@
 class_name Andando
 extends Estado
 
-var velocidade := 500.0
+var velocidade := 600.0
 
 func ao_entrar():
 	toca_animação.play("Andando")
