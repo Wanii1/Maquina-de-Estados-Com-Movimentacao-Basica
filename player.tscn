@@ -183,7 +183,6 @@ sprite = NodePath("../../Sprite2D")
 
 [node name="Deslizando" type="Node" parent="MaquinaDeEstados" node_paths=PackedStringArray("ator", "toca_animação", "sprite")]
 script = ExtResource("7_86y7d")
-velocidade_deslize = 1.35
 ator = NodePath("../..")
 "toca_animação" = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
