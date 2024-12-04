@@ -1,7 +1,7 @@
 class_name Maquina
 extends Node
 
-var _estado_atual: Node
+@export var _estado_atual: Node
 
 
 

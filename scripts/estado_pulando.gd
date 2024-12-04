@@ -19,6 +19,10 @@ func ao_cair():
 	if !ator.is_on_floor():
 		maquina.trocar_por_nome("Caindo")
 
+func ao_pisar_no_chão():
+	if ator.is_on_floor():
+		maquina.trocar_por_nome("Idle")
+
 func ao_andar():
 	if ator.is_on_floor() and input_direcional_x:
 		maquina.trocar_por_nome("Andando")

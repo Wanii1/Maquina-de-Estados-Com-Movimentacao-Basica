@@ -1,7 +1,7 @@
 class_name Deslizando
 extends Estado
 
-var velocidade_deslize:= 1.75
+@export var velocidade_deslize:= 1.75
 
 func ao_entrar():
 	toca_animação.play("Deslizando")
@@ -16,9 +16,9 @@ func update(delta):
 
 	if ator.velocity.x > 350 or ator.velocity.x < -350:
 		if ator.velocity.x < 0 and ator.velocity.x != -350:
-			ator.velocity.x = move_toward(ator.velocity.x, -350, 02.5)
+			ator.velocity.x = move_toward(ator.velocity.x, -350, 03.5)
 		if ator.velocity.x > 0 and ator.velocity.x != 350:
-			ator.velocity.x = move_toward(ator.velocity.x, 350, 02.5)
+			ator.velocity.x = move_toward(ator.velocity.x, 350, 03.5)
 
 	if ator.velocity.x <= 350 and ator.velocity.x >= -350:
 		ator.velocity.x = move_toward(ator.velocity.x, 0, 05.0)

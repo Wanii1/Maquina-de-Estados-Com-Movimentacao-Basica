@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cijf8f6oaip34"]
+[gd_scene load_steps=5 format=3 uid="uid://cijf8f6oaip34"]
 
+[ext_resource type="Texture2D" uid="uid://bn2ataiivx282" path="res://grid.png" id="2_4bhfs"]
 [ext_resource type="PackedScene" uid="uid://c1w3bw5nmir2k" path="res://player.tscn" id="2_i5mrl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhinm"]
@@ -9,6 +10,11 @@ size = Vector2(128.439, 134.244)
 size = Vector2(41.9646, 134.244)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Grid" type="Sprite2D" parent="."]
+position = Vector2(55, -640)
+scale = Vector2(0.622115, 0.622115)
+texture = ExtResource("2_4bhfs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1342.0

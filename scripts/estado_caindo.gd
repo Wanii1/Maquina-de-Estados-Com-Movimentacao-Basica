@@ -29,5 +29,5 @@ func ao_deslizar():
 		maquina.trocar_por_nome("Deslizando")
 
 func ao_parar():
-	if ator.velocity == Vector2.ZERO:
+	if ator.is_on_floor() and !input_direcional_y:
 		maquina.trocar_por_nome("Idle")

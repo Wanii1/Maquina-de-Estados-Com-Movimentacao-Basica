@@ -8,10 +8,7 @@ func ao_entrar():
 
 func update(delta):
 	input_movimentacional()
-	if input_direcional_x < 0:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+
 
 	if input_direcional_x:
 		ator.velocity.x = velocidade * input_direcional_x 
