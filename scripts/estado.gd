@@ -18,7 +18,7 @@ func input_movimentacional():
 	input_direcional_x = Input.get_axis("Esquerda", "Direita")
 	input_direcional_y = Input.get_axis("Deslize", "Pulo")
 	if input_direcional_x: mudar_sprite_h()
-	print (ultimo_input, " ", input_direcional_x)
+
 
 func mudar_sprite_h():
 	if input_direcional_x < 0:

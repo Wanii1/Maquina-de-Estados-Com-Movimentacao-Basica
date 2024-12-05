@@ -19,8 +19,9 @@ func update(delta):
 		if ator.velocity.x > 0 and ator.velocity.x != 350:
 			ator.velocity.x = move_toward(ator.velocity.x, 350, 04.25)
 
-	if ator.velocity.x <= 350 and ator.velocity.x >= -350:
-		ator.velocity.x = move_toward(ator.velocity.x, 0, 05.0)
+	if ator.velocity.x <= 750 and ator.velocity.x >= -750:
+		if ator.velocity.x <= 350 and ator.velocity.x >= -350:
+			ator.velocity.x = move_toward(ator.velocity.x, 0, 06.0)
 		ao_levantar()
 		ao_parar()
 		ao_pular()

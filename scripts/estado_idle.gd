@@ -7,7 +7,7 @@ func ao_entrar():
 
 func update(delta):
 	input_movimentacional()
-	ator.velocity.x = move_toward(ator.velocity.x, 0, 9.0)
+	ator.velocity.x = move_toward(ator.velocity.x, 0, 35.0)
 
 	ao_cair()
 	ao_andar()

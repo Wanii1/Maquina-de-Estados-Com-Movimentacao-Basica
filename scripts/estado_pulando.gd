@@ -2,6 +2,7 @@ class_name Pulando
 extends Estado
 
 var forca_de_pulo := -550.0
+var velocidado_no_ar := 250.0
 
 func ao_entrar():
 	toca_animação.play("Pulando")
@@ -10,6 +11,8 @@ func ao_entrar():
 func update(delta):
 	input_movimentacional()
 	ator.velocity.y = move_toward(ator.velocity.y, 0, 9.0)
+	if input_direcional_x:
+		ator.velocity.x = velocidado_no_ar * input_direcional_x
 	ao_cair()
 	ao_andar()
 
